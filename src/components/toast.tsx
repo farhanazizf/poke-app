@@ -23,8 +23,6 @@ function useToast(): UseToast {
     [setVisible, setProperty]
   );
 
-  // const { message, color, duration, position, buttons } = toastProperty;
-
   const Toast: React.FC = () => (
     <Snackbar
       open={visible}
