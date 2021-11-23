@@ -5,6 +5,9 @@ import { feetDisplay, poundDisplay } from "../../utils/converter";
 const Styled = {
   SectionDetails: styled.section`
     position: relative;
+    ::-webkit-scrollbar {
+      display: none;
+    }
     // padding: 12px 24px;
   `,
   AvatarWrapper: styled.div`
@@ -106,7 +109,7 @@ const Styled = {
       font-weight: 700;
     }
     div.statsIndicator {
-      width: 60%;
+      width: 50%;
     }
   `,
   DescWrap: styled.div`

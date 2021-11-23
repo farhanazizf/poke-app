@@ -94,7 +94,7 @@ const Homepage: React.FC = () => {
           // scrollableTarget="listWrapper"
           pullDownToRefreshThreshold={100}
           next={loadMore}
-          hasMore
+          hasMore={pokemons.results.length < pokemons.count}
           loader={
             <div className="listWrapper">
               {[...Array(2)].map((_, ix) => (
