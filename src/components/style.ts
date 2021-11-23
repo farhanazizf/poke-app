@@ -1,3 +1,4 @@
+import { ChevronLeftOutlined } from "@mui/icons-material";
 import styled from "styled-components/macro";
 import media from "../utils/media";
 
@@ -15,6 +16,17 @@ const Styled = {
     max-width: 35rem;
     margin: 0 auto;
   `}
+  `,
+  IconChevron: styled(ChevronLeftOutlined)`
+    &&& {
+      z-index: 1;
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 32px;
+      color: white;
+    }
   `,
 };
 

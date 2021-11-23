@@ -1,10 +1,21 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import Styled from "./style";
 
-export const MainLayout: React.FC = ({ children }) => {
+export const MainLayout: React.FC<{ backButton?: boolean }> = ({
+  backButton,
+  children,
+}) => {
+  const history = useHistory();
+
   return (
     <Styled.MainContainer>
-      <Styled.MainWrapper>{children}</Styled.MainWrapper>
+      <Styled.MainWrapper>
+        {backButton ? (
+          <Styled.IconChevron onClick={() => history.goBack()} />
+        ) : null}
+        {children}
+      </Styled.MainWrapper>
     </Styled.MainContainer>
   );
 };
