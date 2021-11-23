@@ -1,5 +1,6 @@
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { useHistory } from "react-router-dom";
 import { MainLayout } from "../../components/main-layout";
 import useToast from "../../components/toast";
 import http from "../../utils/http";
@@ -15,6 +16,7 @@ interface IPokemon {
 }
 
 const Homepage: React.FC = () => {
+  const history = useHistory();
   const [Toast, setToast] = useToast();
   const [loading, setLoading] = React.useState(false);
   const [pokemons, setPokemons] = React.useState<IPokemon>({
@@ -62,6 +64,7 @@ const Homepage: React.FC = () => {
   const upperFirst = (word: string) => {
     return word.charAt(0).toUpperCase() + word.slice(1);
   };
+
   const idPokemon = (word: string) => {
     let id = word.slice(0, -1).split("/").pop() || "";
 
@@ -70,6 +73,12 @@ const Homepage: React.FC = () => {
     }
 
     return ("00" + word.slice(0, -1).split("/").pop())?.slice(-3) || "-";
+  };
+
+  const idRaw = (word: string) => {
+    let id = word.slice(0, -1).split("/").pop() || "";
+
+    return id || "-";
   };
 
   return (
@@ -100,8 +109,10 @@ const Homepage: React.FC = () => {
               : pokemons?.results.map((val, i) => (
                   <CardPokemon
                     id={idPokemon(val.url)}
+                    idRaw={idRaw(val.url)}
                     name={upperFirst(val.name)}
                     key={i}
+                    onClick={() => history.push(`/pokemon/${val.name}`)}
                   />
                 ))}
           </div>

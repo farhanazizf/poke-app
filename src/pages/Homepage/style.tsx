@@ -115,21 +115,23 @@ const Styled = {
   `,
 };
 
-export const CardPokemon: React.FC<{ name: string; id: string }> = ({
-  name = "",
-  id,
-}) => {
+export const CardPokemon: React.FC<{
+  name: string;
+  id: string;
+  idRaw: string;
+  onClick?: () => void;
+}> = ({ name = "", id, idRaw, onClick }) => {
   return (
-    <Styled.ItemWrapper>
+    <Styled.ItemWrapper onClick={onClick}>
       <Styled.ImgWrapper>
         <img
           className="pokemon"
-          src={`https://img.pokemondb.net/artwork/large/${name.toLowerCase()}.jpg`}
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${idRaw}.png`}
           alt={name}
         />
       </Styled.ImgWrapper>
       <Styled.DescWrapper>
-        <p className="pokemonId">{id}</p>
+        <p className="pokemonId">#{id}</p>
         <p className="pokemonName">{name}</p>
       </Styled.DescWrapper>
     </Styled.ItemWrapper>
