@@ -1,21 +1,112 @@
 import React from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 import { MainLayout } from "../../components/main-layout";
+import useToast from "../../components/toast";
+import http from "../../utils/http";
+import Styled, { CardPokemon, SkeletonCard } from "./style";
+
+interface IPokemon {
+  count: number;
+  next: string;
+  results: {
+    name: string;
+    url: string;
+  }[];
+}
 
 const Homepage: React.FC = () => {
+  const [Toast, setToast] = useToast();
+  const [loading, setLoading] = React.useState(false);
+  const [pokemons, setPokemons] = React.useState<IPokemon>({
+    count: 1,
+    next: "",
+    results: [],
+  });
+
+  React.useEffect(() => {
+    const getData = async () => {
+      try {
+        setLoading(true);
+        const { data } = await http.get<IPokemon>(`/pokemon`);
+
+        setPokemons(data);
+      } catch (error) {
+        setToast({ message: "Error get data" });
+      } finally {
+        setTimeout(() => setLoading(false), 500);
+      }
+    };
+
+    getData();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const loadMore = async () => {
+    try {
+      const { data } = await http.get<IPokemon>(
+        pokemons?.next.split("v2/")[1] || "/pokemon"
+      );
+
+      setPokemons({
+        ...data,
+        results: pokemons ? [...pokemons?.results, ...data.results] : [],
+      });
+    } catch (error) {
+      setToast({ message: "Error get data" });
+    } finally {
+      setTimeout(() => setLoading(false), 1000);
+    }
+  };
+
+  const upperFirst = (word: string) => {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  };
+  const idPokemon = (word: string) => {
+    let id = word.slice(0, -1).split("/").pop() || "";
+
+    if (id?.length > 3) {
+      return id || "-";
+    }
+
+    return ("00" + word.slice(0, -1).split("/").pop())?.slice(-3) || "-";
+  };
+
   return (
     <MainLayout>
-      <div>
+      <Toast />
+      <Styled.SectionList>
         <div className="listTitle">
           <p>List Pokemon</p>
         </div>
 
-        <div>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo
-            sint doloremque porro.
-          </p>
-        </div>
-      </div>
+        <InfiniteScroll
+          dataLength={pokemons?.results.length * 20}
+          // scrollableTarget="listWrapper"
+          pullDownToRefreshThreshold={100}
+          next={loadMore}
+          hasMore
+          loader={
+            <div className="listWrapper">
+              {[...Array(2)].map((_, ix) => (
+                <SkeletonCard key={ix} />
+              ))}
+            </div>
+          }
+        >
+          <div className="listWrapper">
+            {loading
+              ? [...Array(6)].map((_, i) => <SkeletonCard key={i} />)
+              : pokemons?.results.map((val, i) => (
+                  <CardPokemon
+                    id={idPokemon(val.url)}
+                    name={upperFirst(val.name)}
+                    key={i}
+                  />
+                ))}
+          </div>
+        </InfiniteScroll>
+      </Styled.SectionList>
     </MainLayout>
   );
 };

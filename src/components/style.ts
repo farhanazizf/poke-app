@@ -11,6 +11,10 @@ const Styled = {
     max-width: 35rem;
     margin: 0 auto;
   `}
+    ${media.greaterThan("sm")`
+    max-width: 35rem;
+    margin: 0 auto;
+  `}
   `,
 };
 
