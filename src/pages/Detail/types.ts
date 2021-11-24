@@ -3,36 +3,6 @@ export const initialTab = [
   { category: "about", name: "About" },
 ];
 
-export const sampleArrObj = [
-  {
-    category: "About",
-    name: "Barang Exclusive",
-    item: [
-      { name: "Baju emak", weight: "1000gr", price: 100000 },
-      { name: "Baju emak", weight: "1000gr", price: 100000 },
-      { name: "Baju emak", weight: "1000gr", price: 100000 },
-    ],
-  },
-  {
-    category: "exclusivex",
-    name: "Barang Exclusivex",
-    item: [
-      { name: "Baju emak", weight: "1000gr", price: 100000 },
-      { name: "Baju emak", weight: "1000gr", price: 100000 },
-      { name: "Baju emak", weight: "1000gr", price: 100000 },
-    ],
-  },
-  {
-    category: "exclusivez",
-    name: "Barang Exclusivez",
-    item: [
-      { name: "Baju emak", weight: "1000gr", price: 100000 },
-      { name: "Baju emak", weight: "1000gr", price: 100000 },
-      { name: "Baju emak", weight: "1000gr", price: 100000 },
-    ],
-  },
-];
-
 export interface ISpecies {
   base_happiness: number;
   capture_rate: number;

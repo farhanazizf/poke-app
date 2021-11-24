@@ -24,7 +24,9 @@ const StyledAlert = styled(Alert)`
 `;
 
 function useToast(params?: Params): UseToast {
-  const [visible, setVisible] = React.useState<boolean>(false);
+  const [visible, setVisible] = React.useState<boolean>(
+    params?.offlineMode || false
+  );
   const [toastProperty, setProperty] = React.useState<{ message: string }>(
     () => ({
       ...defaultToastProperty,
@@ -46,7 +48,7 @@ function useToast(params?: Params): UseToast {
       onClose={() => setVisible(false)}
     >
       {params?.offlineMode ? (
-        <StyledAlert severity="error">{toastProperty.message}</StyledAlert>
+        <StyledAlert severity="warning">You are offline!</StyledAlert>
       ) : (
         <Alert severity="error" sx={{ width: "100%", fontWeight: 700 }}>
           {toastProperty.message}

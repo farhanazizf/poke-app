@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { Offline, Detector } from "react-detect-offline";
+import { Detector } from "react-detect-offline";
 import Styled from "./style";
 import useToast from "./toast";
 
@@ -14,7 +14,7 @@ export const MainLayout: React.FC<{ backButton?: boolean }> = ({
   return (
     <Styled.MainContainer>
       <Detector
-        onChange={() => setToast({ message: "You are currently offline!" })}
+        onChange={() => setToast({ message: "You are offline!" })}
         render={({ online }) => (online ? null : <ToastOffline />)}
       />
       <Styled.MainWrapper>
