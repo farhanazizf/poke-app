@@ -2144,6 +2144,13 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.4.tgz#15925414e0ad2cd765bfef58842f7e26a7accb24"
   integrity sha512-1HcDas8SEj4z1Wc696tH56G8OlRaH/sqZOynNNB+HF0WOeXPaxTtbYzJY2oEfiUxjSKjhCKr+MvR7dCHcEelug==
 
+"@types/react-detect-offline@^2.4.1":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@types/react-detect-offline/-/react-detect-offline-2.4.1.tgz#5a71625d3614a56a6c3dacc53c5e9baed0610de0"
+  integrity sha512-ympSl07fvDbu7+EsnhrKwDWkdOqHp22lukhJYIHxnTfSIzOh1T/K9NGmpwKUtgJaNCfllwLvMSXBlyC6nHEObw==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-dom@^16.9.8":
   version "16.9.14"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.9.14.tgz#674b8f116645fe5266b40b525777fc6bb8eb3bcd"
@@ -9576,6 +9583,11 @@ react-app-polyfill@^2.0.0:
     raf "^3.4.1"
     regenerator-runtime "^0.13.7"
     whatwg-fetch "^3.4.1"
+
+react-detect-offline@^2.4.5:
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/react-detect-offline/-/react-detect-offline-2.4.5.tgz#3c242516c37b6789cf89102881031f87e70b80e6"
+  integrity sha512-sI13NPEKl3uQp95FT5CwrYzH3DnXCwNP6TnY6NRF5gFDM4NU9KDlbtA6HG2dwhDVS0RYQGXwZW/mHbdf8fCnaw==
 
 react-dev-utils@^11.0.3:
   version "11.0.4"
