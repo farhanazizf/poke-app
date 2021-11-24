@@ -56,8 +56,8 @@ const Styled = {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 365px;
-    min-height: 365px;
+    max-width: 365px;
+    max-height: 365px;
   `,
   BackgroundWrapper: styled.div<{ pokemonType: string }>`
     width: 100%;
@@ -154,6 +154,13 @@ const Styled = {
       text-transform: capitalize;
       font-weight: 700;
     }
+  `,
+  LoadingWrapper: styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 350px;
+    min-width: 350px;
   `,
 };
 

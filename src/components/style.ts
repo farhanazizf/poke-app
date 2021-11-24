@@ -10,10 +10,12 @@ const Styled = {
   MainWrapper: styled.div`
     ${media.greaterThan("md")`
     max-width: 35rem;
+    position:relative;
     margin: 0 auto;
-  `}
+    `}
     ${media.greaterThan("sm")`
     max-width: 35rem;
+    position:relative;
     margin: 0 auto;
   `}
   `,

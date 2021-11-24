@@ -92,7 +92,9 @@ const Detail: React.FC = () => {
           )}
           <Styled.OverlapWrap>
             {loading && !pokemon ? (
-              <CircularProgress />
+              <Styled.LoadingWrapper>
+                <CircularProgress />
+              </Styled.LoadingWrapper>
             ) : (
               <img
                 className="pokemonAvatar"
