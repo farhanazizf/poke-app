@@ -26,11 +26,11 @@ const Detail: React.FC = () => {
 
         // console.log(data);
         // setPokemon(data);
-        setTimeout(() => setPokemon(data), 1000);
+        setPokemon(data);
       } catch (error) {
         setToast({ message: "Error get data" });
       } finally {
-        setTimeout(() => setLoading(false), 1000);
+        setTimeout(() => setLoading(false), 500);
       }
     };
 
